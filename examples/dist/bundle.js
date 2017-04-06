@@ -629,9 +629,15 @@ var Select = React.createClass({
 		var _this7 = this;
 
 		var menuDOM = ReactDOM.findDOMNode(this.refs.menu);
-		if (document.activeElement.isEqualNode(menuDOM)) {
+
+		try {
+			if (document.activeElement.isEqualNode(menuDOM)) {
+				return;
+			}
+		} catch (err) {
 			return;
 		}
+
 		this._blurTimeout = setTimeout(function () {
 			if (_this7._focusAfterUpdate || !_this7.isMounted()) return;
 			_this7.setState({
