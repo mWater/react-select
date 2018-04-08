@@ -156,7 +156,7 @@ var Select = React.createClass({
 
 	componentDidMount () {
 		if (this.props.asyncOptions && this.props.autoload) {
-			this.autoloadAsyncOptions();
+			this.autoloadAsyncOptions(this.props.value, {isLoading: false});
 		}
 	},
 
@@ -185,7 +185,7 @@ var Select = React.createClass({
 				));
 			};
 			if (this.props.asyncOptions) {
-				this.loadAsyncOptions(newProps.value, {}, setState);
+				this.loadAsyncOptions(newProps.value, {isLoading: false}, setState);
 			} else {
 				setState();
 			}
