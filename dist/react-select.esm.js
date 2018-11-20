@@ -4068,8 +4068,12 @@ var _initialiseProps = function _initialiseProps() {
         if (focusedValue) {
           _this7.removeValue(focusedValue);
         } else {
-          if (!backspaceRemovesValue || !isMulti) return;
-          _this7.popValue();
+          if (!backspaceRemovesValue) return;
+          if (isMulti) {
+            _this7.popValue();
+          } else if (isClearable) {
+            _this7.clearValue();
+          }
         }
         break;
       case 'Tab':
